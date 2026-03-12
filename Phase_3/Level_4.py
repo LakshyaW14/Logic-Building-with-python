@@ -83,4 +83,20 @@ def count_V_C(s,i=0):
     
     #Tc O(n)
 
-print(count_V_C("aerdauiouodf"))
+
+#Question 11
+#Divide and Conquer - Binary Search
+
+def Binary_Search (a, x, left=0, right=None):
+    
+    if right is None:
+        right = len(a)-1
+    if left > right: 
+        return -1
+    mid = left + ((right-left)//2)
+    if a[mid]== x:
+        return mid
+    return Binary_Search(a,x,left, mid-1) if x < a[mid] \
+        else Binary_Search(a,x, mid+1, right)
+    
+print(Binary_Search([-1,0,1,4,6,8,9,11], 9))
