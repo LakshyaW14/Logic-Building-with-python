@@ -225,10 +225,10 @@ j =5        #Pattern Length
 #         right= size-col-1
 #         bottom = size-row-1
         
-#         #decides which layer the cell belongs to 
-#         layer= min(top,left,right,bottom)
-#         print(j-layer,end=" ")
-#     print()
+        #decides which layer the cell belongs to 
+        layer= min(top,left,right,bottom)
+        print(j-layer,end=" ")
+    print()
 
 #center distance method
 
