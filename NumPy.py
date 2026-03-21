@@ -1,3 +1,6 @@
+# NumPy tutorial 
+
+
 # command for installing numpy - pip install numpy
 
 import numpy as np
@@ -127,6 +130,7 @@ print(y.base) # view returns original object
 
 # Get the shape of an array
 
+
 arr2 = np.array([[1,2,3], [5,6,7]])
 print(arr2.shape) # Returns a tuple (2,3) means that the arr has 2 d, 
 print()
@@ -187,3 +191,96 @@ for x in np.nditer(arr2[:, ::2]):
 
 for idx , x in np.ndenumerate(arr2):
     print(idx,x)
+for idx , x in np.ndenumerate(arr1):
+    print(idx,x)
+
+# Array Joining 
+# in SQL table joining happens with keys, In NumPy array join arrays by axis
+print()
+arr = np.array([1,2,3,4,5])
+arr_=np.array([3,4,5,6,7])
+array = np.concatenate((arr,arr_)) # by default axis is 0
+
+arr2 = np.array([[1,2,3], [5,6,7]])
+arr2_ = np.array([[2,3,4], [23,4,6]])
+array_ = np.concatenate((arr2,arr2_), axis=1)
+print(array_)
+print(array_.shape)
+
+# Joining Arrays Using Stack Functions
+# Stacking is same as concatenation, \
+# the only difference is that stacking is done along a new axis.
+
+array2 = np.stack((arr,arr_), axis=1)
+print(array2)
+
+# Stacking along the rows
+print(np.hstack((arr,arr_)))
+
+# Stacking along the col
+print(np.vstack((arr,arr_)))
+
+# Stacking along the Height ( depth )
+print(np.dstack((arr,arr_)))
+
+# Spliting Numpy array 
+# Splitting is reverse operation of Joining.
+
+# Joining merges multiple arrays into one and Splitting breaks one array into multiple.
+
+arr__=np.array_split(arr, 2) # it adjust the elements , when elements are less 
+# it returns the list containing each split of the array 
+print(arr__[0])
+
+# Spliting 2d arrray 
+arr = np.array([[1, 2], [3, 4], [5, 6], [7, 8], [9, 10], [11, 12]])
+print(np.array_split(arr,3))
+print()
+print(np.array_split(arr, 3, axis=1),end=" ")
+
+# An alternate solution is using hsplit() opposite of hstack()
+print()
+print(np.hsplit(arr,2))
+
+# Similar alternates to vstack() and dstack() are available as vsplit() and dsplit().
+
+#Array search in NumPy
+arr = np.array([1, 2, 3, 4, 5, 4, 4])
+print(np.where(arr==4))
+print(np.where(arr%2 != 0))
+print(np.where(arr%2 == 0))
+print()
+
+# Search Sorted () performs a binary search , method is assumed to be used in sorted arrays 
+
+arr = np.array([5,6,7,8,9,10])
+print(np.searchsorted(arr,6))
+print(np.searchsorted(arr,7,side='right'))
+print(np.searchsorted(arr,[2,4,11]))
+
+
+# Array sorting in NumPy 
+arr =np.array([2,6,4,8,9,11])
+print(np.sort(arr))
+print()
+
+# NumPy Filter Array 
+# Getting some elements out of an existing array and creating a new array out of them is called filtering.
+
+# In NumPy, you filter an array using a boolean index list.
+
+arr = np.array([30,32,33,34,35])
+
+filter_arr = []
+
+for element in arr:
+    if element %2 == 0 :
+        filter_arr.append(True)
+    else:
+        filter_arr.append(False)
+new_arr = arr[filter_arr]
+
+print(filter_arr)
+print(new_arr)
+
+
